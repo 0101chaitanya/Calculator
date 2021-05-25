@@ -1,0 +1,57 @@
+:root {
+    -webkit-font-smoothing: antialiased;
+    font-size: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+svg,
+button {
+    padding: 0px;
+}
+
+div {
+    border-style: solid;
+    border-color: aqua;
+    //  width: max-content;
+}
+
+#layout {
+    display: flex;
+    flex-direction: column;
+    align-items: ;
+}
+
+p {
+    font-size: 16px;
+    color: rgb(240, 37, 11);
+    opacity: 1;
+    position: relative;
+    text-align: left;
+}
+
+p .invalid {
+    font-size: 16px;
+    color: rgb(240, 37, 11);
+    opacity: 1;
+}
+
+#row1 {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    height: 100%;
+}
+
+input,
+input+button {
+    color: aqua;
+    margin: 0px 20px;
+}

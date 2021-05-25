@@ -1,0 +1,20 @@
+:root {
+    -webkit-font-smoothing: antialiased;
+    font-size: 20px;
+}
+
+svg,
+button {
+    padding: 0px;
+}
+
+div {
+    border-style: solid;
+    width: max-content;
+}
+
+#layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
