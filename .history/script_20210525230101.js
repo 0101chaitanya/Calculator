@@ -1,4 +1,4 @@
-let input = document.querySelector('input');
+letinput = document.querySelector('input');
 let p = document.querySelector('p');
 let patterns = /^[+\-*]$/;
 input.addEventListener('change', e => {

@@ -1,17 +1,17 @@
-let input = document.querySelector('input');
+input = document.querySelector('input');
 let p = document.querySelector('p');
 let patterns = /^[+\-*]$/;
 input.addEventListener('change', e => {
-    compute(e.target.parentElement);
+    compute(e.target, p);
 });
 let inputArray = [];
 let computedArray = [];
 let evalString = 0;
 let operatorCount = 0;
 
-function compute(inputParent, p) {
+function compute(input, p) {
 
-    inputArray = e.target.split('');
+    inputArray = input.value.split('');
     console.log(inputArray);
     computedArray = inputArray.slice().reduce((item) => {
         if (!isNaN(Number(item))) {
@@ -32,7 +32,7 @@ function compute(inputParent, p) {
 
 
         } else {
-            p.style.color = 'orange';
+            p.className.push = 'invalid';
         }
 
 

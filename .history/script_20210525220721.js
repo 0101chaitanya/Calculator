@@ -1,39 +1,38 @@
-let input = document.querySelector('input');
+input = document.querySelector('input');
 let p = document.querySelector('p');
-let patterns = /^[+\-*]$/;
+let patterns = [/^[\d]+$/, /^[+\-*]$/];
 input.addEventListener('change', e => {
-    compute(e.target.parentElement);
+    compute(e.target);
 });
 let inputArray = [];
 let computedArray = [];
 let evalString = 0;
 let operatorCount = 0;
 
-function compute(inputParent, p) {
+function compute(input) {
 
-    inputArray = e.target.split('');
+    inputArray = input.value.split('');
     console.log(inputArray);
-    computedArray = inputArray.slice().reduce((item) => {
+    computedArray = inputArray.slice().map((item) => {
         if (!isNaN(Number(item))) {
-            evalString += Number(item);
+            evalString = Number(item);
             return item;
-        } else if (item.match(patterns)) {
+        } else if (item.match(patterns(1))) {
             switch (item) {
                 case '+':
-                    operatorCount = 1;
-                    break;
+                    return `+`;
                 case '-':
                     return `-`;
                 case '*':
                     return `*`;
                 case '/':
                     return `/`;
+                default:
+                    p.addClass = `invalid`;
+                    break;
             }
 
-
-        } else {
-            p.style.color = 'orange';
-        }
+        } else {}
 
 
     });

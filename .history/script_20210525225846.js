@@ -1,4 +1,4 @@
-let input = document.querySelector('input');
+input = document.querySelector('input');
 let p = document.querySelector('p');
 let patterns = /^[+\-*]$/;
 input.addEventListener('change', e => {
@@ -11,7 +11,7 @@ let operatorCount = 0;
 
 function compute(inputParent, p) {
 
-    inputArray = e.target.split('');
+    inputArray = inputParent.nth.value.split('');
     console.log(inputArray);
     computedArray = inputArray.slice().reduce((item) => {
         if (!isNaN(Number(item))) {
