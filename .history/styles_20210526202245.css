@@ -1,0 +1,122 @@
+:root {
+    -webkit-font-smoothing: antialiased;
+    font-size: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( 90deg, #1bdada, #98ee0d);
+}
+
+h1 {
+    position: relative;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1>svg {
+    position: relative;
+    margin-left: 15px;
+    width: 40px;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-name: calcRotate !important;
+}
+
+@keyframes calcRotate {
+    100% {
+        transform: scale(1.3);
+    }
+}
+
+svg {
+    width: 40px;
+}
+
+#layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    font-size: 16px;
+    color: rgb(12, 34, 235);
+    opacity: 1;
+    position: relative;
+    text-align: left;
+}
+
+p.invalid {
+    font-size: 16px;
+    color: rgb(240, 37, 11);
+    opacity: 1;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-name: caution;
+}
+
+@keyframes caution {
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+#row1 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    margin: 5px 0px 5px 0;
+    border-radius: 20px;
+}
+
+button>svg {
+    position: relative;
+    padding: 0 23px;
+    color: #2196f3;
+}
+
+button:hover {
+    background-color: rgb(106, 201, 218);
+}
+
+svg,
+button {
+    padding: 0px;
+}
+
+div {
+    width: max-content;
+}
+
+input {
+    height: 50px;
+    border-radius: 15px;
+    width: 270px;
+    position: relative;
+    font-size: 25px;
+    border: 1px solid;
+}
+
+input::placeholder {
+    position: relative;
+    right: 10px;
+    text-align: right;
+    opacity: 100%;
+}
+
+input+button {
+    font-size: 25px;
+    position: relative;
+    left: 5px;
+}
