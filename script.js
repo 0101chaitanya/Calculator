@@ -1,118 +1,167 @@
-let input = document.querySelector('input');
-console.log(input);
+let input = document.getElementById('input');
+console.log(input.textContent);
+let buttons = Array.from(document.querySelectorAll('svg'));
+//console.log(1.3);
 let p = document.querySelector('p');
-let array = [];
-input.addEventListener('keydown', e => {
-    keyValidation(e);
+let arrayCode = ['Equal', `Enter`, `e.shiftKey == true && e.code == 'Equal'`, `Minus`, `e.shiftKey` && 'Digit8', `Slash`, ` backspace`, `delete`, `Digit0`, `Digit1`, `Digit2`,
+    `Digit3`, `Digit4`, `Digit5`, `Digit6`, `Digit7`, `Digit8`, `Digit9`, `Period`
+];
+//console.log((parseFloat(`${x}${`.`}${y}`)));
+buttons.forEach(item => {
+
+    item.addEventListener('click', e => {
+        input.focus();
+        keyValidation(e);
+    });
 });
-///^([\d]+[\.]?[\d]{0,8}?[+\/\*-]){1,}$/g;
+document.addEventListener('keyup', e => {
+
+    keyValidation(e);
+    // e.preventDefault();
+
+});
+
 function keyValidation(e) {
-    // e.preventDefault(); +
+    //console.log(e.key);
+    if (e.code === 'Backspace' || e.target.id === 'backspace') {
+        clear();
+    } else if (e.code === 'Digit1' || e.target.id === '1') {
 
-    let a = 2,
-        b = 4;
-    /*  for (let i = 0; i <= array.length; i++) {
-         if (array[i] !== e.code) {
-     */
-    console.log(e.key);
-    array.push(e.key);
+        append(1);
 
+    } else if (e.code === 'Digit2' || e.target.id === '2') {
+
+        append(2);
+
+    } else if (e.code === 'Digit3' || e.target.id === '3') {
+
+        append(3);
+
+
+    } else if ((e.code === 'Equal' && e.shiftKey) || e.target.id === '+') {
+
+
+        append("+");
+    } else if (e.code === 'Digit4' || e.target.id === '4') {
+
+        append(4);
+
+    } else if (e.code === 'Digit5' || e.target.id === '5') {
+
+        append(5);
+
+
+    } else if (e.code === 'Digit6' || e.target.id === '6') {
+
+        append(6);
+
+    } else if (e.code === 'Minus' || e.target.id === '-') {
+
+        append('-');
+
+    } else if (e.code === 'Digit7' || e.target.id === '7') {
+
+        append(7);
+
+    } else if (e.code === 'Digit8' || e.target.id === '8') {
+
+        append(8);
+
+    } else if (e.code === 'Digit9' || e.target.id === '9') {
+
+        append(9);
+
+    } else if ((e.code == 'KeyX') || e.target.id === '*') {
+        append('*');
+
+    } else if (e.code === 'Digit0' || e.target.id === '0') {
+
+        append(0);
+
+    } else if (e.code === 'Period' || e.target.id === 'dot') {
+
+        append('.');
+
+    } else if (e.code === 'Enter' || e.target.id === '=') {
+        evaluate();
+        show();
+
+    } else if (e.code === 'Slash' || e.target.id === '/') {
+
+        append('/');
+
+    }
 
 }
-console.table(array);
+//console.log(parseFloat('01'));
+input.textContent = '0';
+let operatorCount = 0;
+let array = [];
+let i = 0;
+let periodCount = 0;
+let operatorArray = [];
+let stack = 0;
 
-/*  if (e.shiftKey && e.code == 'Equal') {
-        e.target.value = '+';
+function append(inputVar) {
+    if (!isNaN(inputVar) && operatorCount <= 2) {
+        input.textContent = (input.textContent + inputVar);
+        array[operatorCount] = inputVar;
+    } else if (isNaN(inputVar) && inputVar !== "." && operatorCount <= 2) {
 
+        input.textContent = (input.textContent + inputVar);
+        operatorArray[operatorCount] = inputVar;
+        periodCount = 0;
+        operatorCount++;
+
+    } else if (isNaN(inputVar) && inputVar == "." && periodCount <= 1 && operatorCount <= 2) {
+        input.textContent = (input.textContent + inputVar);
+        array[operatorCount] = input.textContent + inputVar;
+        periodCount++;
+
+    } else if (operatorCount > 2) {
+        evaluate();
+        show();
     }
- */
-let divideArray = [];
-input.addEventListener('input', e => {
-    let reg = /^([\d]+[\.]?[\d]{0,8}?[+\/\*-]){1,}$/g;
-});
+}
 
-
-
-
-
-//console.log(array);
-//  if(e.keyCode = )
-
-//p.style.color = 'red';
-
-
-
-
-
-
-/* let computedArray;
-let parsedArray;
-let evalString = 0;
-let numCount = 0;
-let intReg = /^[0-9]+$/;
-let floatReg = /^([0-9]+).([0-9]{0,4})?$/;
-let mathReg = /^[.+\-*]$/;
-
-let a = (parseFloat(1));
-console.log(a);
-console.log(intReg.test(a));
-let item1;
-let index;
-
-function compute(element) {
-    let inputLength = element.value.length;
-    console.log(inputLength);
-    let plusIndex;
-    let minusIndex;
-    let intoIndex;
-    let byIndex;
-    let OutputArray = [];
-    let intermediateArray = [];
-
-    let inputArray;
-    for (i = 0; i < inputLength; i++) {
-        inputArray = element.value.split("");
-        outputArray = inputArray.splice(0, 1);
-        console.log(outputArray);
-        console.log();
-        plusIndex = inputArray.indexOf("+");
-        console.log(plusIndex);
-        numberArray = element.value.split("+" || "-" || '*' || "/");
-
+function evaluate() {
+    if (operatorArray[0] == '+') {
+        stack = parseFloat((parseFloat(array[0]) + parseFloat(array[1])).toFixed(4));
     }
-    inputArray = element.value.split("");
-    numberArray = element.value.split("+" || "-" || '*' || "/");
-    parsedArray = numberArray.slice().reduce((item) => {
-        item1 = Number(parseFloat(item));
-        if (intReg.test(item) || floatReg.test(item)) {
-            evalString += item1;
-            //  console.log(evalString);
-            return evalString;
+    if (operatorArray[0] == '-') {
+        stack = parseFloat((parseFloat(array[0]) - parseFloat(array[1])).toFixed(4));
+    }
+    if (operatorArray[0] == '*') {
+        stack = parseFloat((parseFloat(array[0]) * parseFloat(array[1])).toFixed(4));
+    }
+    if (operatorArray[0] == '/' && array[1] != '0') {
+        if (array[1] == '0') {
+            input.textContent = 'Invalid input';
+            stack = 0;
+
+        } else {
+            stack = parseFloat(parseFloat(parseFloat(array[0]) / parseFloat(array[1])).toFixed(4));
         }
-        if (add(item)) {
-            //   let check =
-        }
-        console.log(parsedArray);
+    }
+    return stack;
+}
 
-        return parsedArray;
-    });
-} */
-/*        function operatorPlace(arg) {
+function show() {
+    input.textContent = stack;
+    operatorCount = 0;
+    array = [];
+    operatorArray = [];
+    stack = 0;
+    periodCount = 0;
 
-    } *
-    /      computedArray = compute(input);
-    /* filter(item => Object.values(item) == 'valid')
-        .reduce((object) => {
-            evalString = 0;
-            //console.log(`${0} + ${Number.parseFloat(Object.keys(object)).toFixed(4)}`);
-            if (!isNaN(Number.parseFloat(Object.keys(object)).toFixed(4))) {
-                evalString = `${evalString}${Number.parseFloat(Object.keys(object)).toFixed(4)}`;
-                console.log(evalString);
-            }
+}
 
-        }); */
-/* .filter(item => {
-    if(item.keys)
-}); */
-//console.log(computedArray);
-//console.log(computedArray);
+function clear() {
+    input.textContent = '0';
+    operatorCount = 0;
+    array = [];
+    operatorArray = [];
+    stack = 0;
+    periodCount = 0;
+
+}
