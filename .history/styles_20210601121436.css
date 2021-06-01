@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+ :root {
+    -webkit-font-smoothing: antialiased;
+    font-size: 1.8vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient( 90deg, #91ebeb, #b9eb6a);
+}
+
+h1 {
+    font-size: 6rem;
+    position: relative;
+    top: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(255, 0, 200);
+}
+
+#layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: -2em;
+}
+
+button {
+    font-size: 4rem;
+    size: 4em;
+    width: max-content
+}
+
+#row1 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    right: 1rem;
+    top: 2rem;
+}
+
+#row2,
+#row3,
+#row4,
+#row5 {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    right: 1rem;
+    top: 2rem;
+}
+
+#inp {
+    display: block;
+    text-align: left;
+    padding: 0rem 0 0rem 2rem;
+    border: 1px solid;
+    background-color: rgb(243, 242, 207);
+    height: 3.7rem;
+    border-radius: 0.8rem;
+    width: 15rem;
+    position: relative;
+    font-size: 1.7rem;
+    right: 0.1rem;
+    botton: 1rem;
+    border: 0.5rem solid;
+    overflow: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#input+button {
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    top: 0rem;
+    left: 0.1rem;
+}
